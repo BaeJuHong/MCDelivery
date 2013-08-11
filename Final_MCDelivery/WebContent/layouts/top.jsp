@@ -67,10 +67,14 @@
 			</tr>
 			<tr>
 				<td colspan="3" align="right">
-					<a href="../member/join.jsp">회원가입</a>
-					<a href="../member/mypage.jsp">마이페이지</a>
-					<a href="../member/search.jsp">ID/PASSWORD찾기</a>
-					<% if((String)LoginID=="admin@naver.com"){ %>
+					<% if(LoginID == null){ %>
+						<a href="../member/join.jsp">회원가입</a>
+						<a href="../member/mypage.jsp">마이페이지</a>
+						<a href="../member/search.jsp">ID/PASSWORD찾기</a>
+					<% }else if(LoginID.toString().equals("admin@naver.com")){ %>
+						<a href="../member/join.jsp">회원가입</a>
+						<a href="../member/mypage.jsp">마이페이지</a>
+						<a href="../member/search.jsp">ID/PASSWORD찾기</a>
 						<a href="../member/manage.jsp">Manage</a>
 					<% } %>	
 				</td>
