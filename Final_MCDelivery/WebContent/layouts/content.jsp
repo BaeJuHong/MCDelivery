@@ -6,6 +6,6 @@
 <title>Content Page</title>
 </head>
 <body>
-Content Page
+
 </body>
 </html>
