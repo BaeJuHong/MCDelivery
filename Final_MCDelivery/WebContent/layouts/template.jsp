@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Layout Page</title>
+<title>MC Delivery</title>
 </head>
 <%
 	//중간부분에 표시할 페이지를 파라미터로부터 넘겨받는 변수 선언

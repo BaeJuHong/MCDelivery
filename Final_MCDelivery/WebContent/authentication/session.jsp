@@ -21,7 +21,7 @@
 		</script>
 		<%
 		session.setAttribute("LoginID", null);
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("../authentication/login.jsp");
 	}
  %>
 

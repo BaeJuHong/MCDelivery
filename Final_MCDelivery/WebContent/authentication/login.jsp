@@ -1,30 +1,12 @@
-<%@page import="Member.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@page import="Member.MemberDao"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login Page</title>
 </head>
-<script type="text/javascript">
-function Login_Clicked()
-{
-	var idCtrl = document.getElementById('inputid');
-	var id = idCtrl.value;
-	var pwCtrl = document.getElementById('inputpw');
-	var pw = pwCtrl.value; 
-
-	if(id == "" || pw ==""){
-		alert("Please Check your ID or Password");
-		return;
-	}
-}
-
-function Join_Page()
-{
-	window.open("./join.jsp",'_self');
-}
-</script>
+<script type="text/javascript" src="../assets/js/checkForm.js"></script>
 <body>
 <form action="login.jsp" method="post">
 <jsp:useBean id="member" class="Member.Member" scope="page"></jsp:useBean>
@@ -59,7 +41,7 @@ function Join_Page()
 			bLogin  = true;
 			//set Session
 			session.setAttribute("LoginID", inputID);
-			response.sendRedirect("main.jsp");
+			response.sendRedirect("../layouts/main.jsp");
 			return;
 		}
 		else{
@@ -70,21 +52,21 @@ function Join_Page()
 %>
 <%if(bLogin == false){ %>
 	<div align="center">
-		<table cellpadding="10" border="1" align="center">
+		<table cellpadding="10" align="center">
 			<tr align="center" valign="middle">
 				<td><h4>I D</h4></td>
-				<td><input type="text" id="inputid" name="inputid" style="height: 2em;"	size="25" maxlength="25" value="<%= inputID %>"></td>
+				<td><input type="text" id="inputID" name="inputID" style="height: 2em;"	size="25" maxlength="25" value="<%= inputID %>"></td>
 			</tr>
 
 			<tr align="center" valign="middle">
 				<td><h4>P W</h4>
-				<td><input type="password" id="inputpw" name="inputpw" style="height: 2em;" size="25" maxlength="25" value="<%= inputPW %>"></td>
+				<td><input type="password" id="inputPW" name="inputPW" style="height: 2em;" size="25" maxlength="25" value="<%= inputPW %>"></td>
 			</tr>
 
 			<tr align="center" valign="middle">
 				<td align="center" colspan="2">
-					<input type="submit" value="Login" style="height: 3em; width: 9em;" onclick="Login_Clicked()"></input>
-					<input type="button" value="Join" style="height: 3em; width: 9em;" onclick="Join_Page()"></input>
+					<input type="submit" value="Login" style="height: 3em; width: 9em;" onclick="javascript:checkLogin()"></input>
+					<input type="button" value="Join" style="height: 3em; width: 9em;" onclick="javascript:join()"></input>
 				</td>
 			</tr>
 			
@@ -92,12 +74,6 @@ function Join_Page()
 				<td align="center" colspan="2">
 					<h3><b><font face="Verdana" color="teal"><%=errMsg%></font></b></h3>
 				</td>
-			</tr>
-			
-			<tr align="center" valign="middle">
-				<td align="center" colspan="2"><h3>
-						<b><font face="Verdana" color="teal"><%= session.getAttribute("LoginID") %></font></b>
-					</h3></td>
 			</tr>
 		</table>
 	</div>

@@ -106,4 +106,31 @@ public class MemberDao {
 		}
 		return success;
 	}
+	
+	public boolean checkID(String id){
+		boolean success = false;
+		connect();
+		String sql = "";
+		try{
+			stmt = conn.createStatement();
+			ResultSet rs = null;
+			
+			sql =	" select * from mc_member ";
+			sql+= 	" where ";
+			sql+= 	" member_email='"+ id +"' ";
+			
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()){
+				success = true;
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect();
+		}
+		
+		return success;		
+	}
 }

@@ -5,14 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Top Page</title>
-<script type="text/javascript" src="../assets/js/checkLogin.js"></script>
+<script type="text/javascript" src="../assets/js/checkForm.js"></script>
 <link rel="stylesheet" href="../assets/css/page.css" type="text/css">
 <link rel="stylesheet" href="../assets/css/site.css" type="text/css">
 </head>
 <%
 	request.setCharacterEncoding("EUC-KR");
 	Object LoginID = session.getAttribute("LoginID");
+	
 %>
+
 <body>
 	<form method="post" name="top">
 	
@@ -45,7 +47,7 @@
 			return;
 		}
 		else{
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("../authentication/login.jsp");
 		}
 	}
 %>
@@ -56,26 +58,26 @@
 				</td>
 				<td width="64%" height="56" align="right">
 					<%if(LoginID == null){ %>
-						<label>ID</label><input type="text" name="inputID">
-						<label>PW</label><input type="password" name="inputPW">
-						<input type="submit" value="로그인">
+						<label>ID</label><input type="text" id="inputID" name="inputID">
+						<label>PW</label><input type="password" id="inputPW" name="inputPW">
+						<input type="submit" value="로그인" onclick="javascript:checkLogin()">
 					<%}else{ %>
 						<label><%=(String)LoginID %>님 환영합니다</label>
-						<input type="submit" value="로그아웃">
-					<%} %>
+						<a href="../authentication/logout.jsp"><input type="button" value="로그아웃" onclick="javascript:Logut_Clicked()"></a>
+					<% } %>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3" align="right">
 					<% if(LoginID == null){ %>
-						<a href="../member/join.jsp">회원가입</a>
-						<a href="../member/mypage.jsp">마이페이지</a>
-						<a href="../member/search.jsp">ID/PASSWORD찾기</a>
+						<a href="template.jsp?CONTENTPAGE=../member/join.jsp">회원가입</a>
+						<a href="template.jsp?CONTENTPAGE=../member/mypage.jsp">마이페이지</a>
+						<a href="template.jsp?CONTENTPAGE=../member/search.jsp">ID/PASSWORD찾기</a>
 					<% }else if(LoginID.toString().equals("admin@naver.com")){ %>
-						<a href="../member/join.jsp">회원가입</a>
-						<a href="../member/mypage.jsp">마이페이지</a>
-						<a href="../member/search.jsp">ID/PASSWORD찾기</a>
-						<a href="../member/manage.jsp">Manage</a>
+						<a href="template.jsp?CONTENTPAGE=../member/join.jsp">회원가입</a>
+						<a href="template.jsp?CONTENTPAGE=../member/mypage.jsp">마이페이지</a>
+						<a href="template.jsp?CONTENTPAGE=../member/search.jsp">ID/PASSWORD찾기</a>
+						<a href="template.jsp?CONTENTPAGE=../member/manage.jsp">Manage</a>
 					<% } %>	
 				</td>
 			</tr>

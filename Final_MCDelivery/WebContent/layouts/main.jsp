@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>Main Page</title>
 </head>
 <body>
 	<!-- 페이지의 흐름제어를 page 속성값이 지정한 페이지로 이동 -->
-	<!-- CONTENTPAGE="content.jsp" 값을 넘겨준다 -->
+	<!-- CONTENTPAGE = 초기 중간페이지 값을 넘겨준다 -->
 	<jsp:forward page="template.jsp">		
 		<jsp:param name="CONTENTPAGE" value="content.jsp" />
 	</jsp:forward>
